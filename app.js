@@ -13,8 +13,8 @@ import {
   signIn,
   signOutUser,
   startFirebaseAuth
-} from "./firebase-service.js?v=47";
-import { appFeatures, getAppLink, isAdminEmail, isPremiumTesterEmail } from "./firebase-config.js?v=47";
+} from "./firebase-service.js?v=49";
+import { appFeatures, getAppLink, isAdminEmail, isPremiumTesterEmail } from "./firebase-config.js?v=49";
 
 const cards = [
   {
@@ -1805,10 +1805,10 @@ function renderActionList() {
 
 function bindEvents() {
   document.querySelectorAll("[data-view]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.activeView = button.dataset.view;
-      saveState();
-      render();
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openView(button.dataset.view);
     });
   });
 
@@ -2121,6 +2121,17 @@ function bindEvents() {
     saveState();
     render();
   });
+}
+
+function openView(view) {
+  if (!view) return;
+  if (view === "admin" && !isAdmin()) {
+    showAppMessage("Admin access only.");
+    return;
+  }
+  state.activeView = view;
+  saveState();
+  render();
 }
 
 async function sendCoachMessage() {
@@ -2833,6 +2844,13 @@ function escapeHtml(value) {
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
+
+document.addEventListener("click", (event) => {
+  const viewButton = event.target.closest("[data-view]");
+  if (!viewButton || !app?.contains(viewButton)) return;
+  event.preventDefault();
+  openView(viewButton.dataset.view);
+});
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {

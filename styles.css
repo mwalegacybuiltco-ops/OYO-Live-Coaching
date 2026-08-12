@@ -316,6 +316,7 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
   padding: 14px clamp(16px, 3vw, 34px);
   background: rgba(247, 244, 236, 0.92);
@@ -346,8 +347,9 @@ select:focus {
 .nav {
   display: flex;
   flex: 1;
+  flex-wrap: wrap;
   gap: 6px;
-  overflow-x: auto;
+  overflow: visible;
   scrollbar-width: none;
 }
 
@@ -357,6 +359,7 @@ select:focus {
 
 .nav button {
   flex: 0 0 auto;
+  min-height: 42px;
   padding: 9px 12px;
   color: var(--muted);
   background: transparent;
@@ -373,6 +376,7 @@ select:focus {
 
 .account {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   align-items: center;
 }

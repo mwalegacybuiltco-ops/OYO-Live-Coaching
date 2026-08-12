@@ -1,4 +1,4 @@
-const CACHE_NAME = "oyo-compass-v47";
+const CACHE_NAME = "oyo-compass-v49";
 const ASSETS = [
   "./",
   "./index.html",
