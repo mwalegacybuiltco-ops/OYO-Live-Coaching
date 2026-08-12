@@ -13,8 +13,8 @@ import {
   signIn,
   signOutUser,
   startFirebaseAuth
-} from "./firebase-service.js?v=49";
-import { appFeatures, getAppLink, isAdminEmail, isPremiumTesterEmail } from "./firebase-config.js?v=49";
+} from "./firebase-service.js?v=50";
+import { appFeatures, getAppLink, isAdminEmail, isPremiumTesterEmail } from "./firebase-config.js?v=50";
 
 const cards = [
   {
@@ -1136,7 +1136,6 @@ function renderWellnessDisclaimer() {
 }
 
 function renderView() {
-  if (!state.onboarding?.completed) return renderOnboarding();
   const map = {
     dashboard: renderDashboard,
     coach: renderCoach,
@@ -1153,6 +1152,7 @@ function renderView() {
     admin: renderAdmin
   };
   if (state.activeView === "admin" && !isAdmin()) return renderAdminLocked();
+  if (!state.onboarding?.completed && state.activeView === "dashboard") return renderOnboarding();
   return (map[state.activeView] || renderDashboard)();
 }
 
