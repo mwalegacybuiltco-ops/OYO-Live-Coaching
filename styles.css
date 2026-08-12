@@ -316,7 +316,7 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 16px;
   padding: 14px clamp(16px, 3vw, 34px);
   background: rgba(247, 244, 236, 0.92);
@@ -347,9 +347,11 @@ select:focus {
 .nav {
   display: flex;
   flex: 1;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
-  overflow: visible;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
 }
 
@@ -376,7 +378,8 @@ select:focus {
 
 .account {
   display: flex;
-  flex-wrap: wrap;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
   gap: 8px;
   align-items: center;
 }
@@ -972,12 +975,54 @@ select:focus {
 
 @media (max-width: 720px) {
   .topbar {
-    align-items: stretch;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px 10px;
+    overflow-x: auto;
+  }
+
+  .logo {
+    min-width: 38px;
+    gap: 0;
+  }
+
+  .logo-mark {
+    width: 34px;
+    height: 32px;
+    font-size: 0.72rem;
+    border-radius: 6px;
+  }
+
+  .logo span:last-child {
+    display: none;
+  }
+
+  .nav {
+    gap: 4px;
+  }
+
+  .nav button {
+    min-height: 34px;
+    padding: 7px 9px;
+    font-size: 0.82rem;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+  }
+
+  .plan-pill,
+  .topbar .btn.small {
+    min-height: 34px;
+    padding: 7px 9px;
+    font-size: 0.82rem;
   }
 
   .account {
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 6px;
   }
 
   .stats-grid,

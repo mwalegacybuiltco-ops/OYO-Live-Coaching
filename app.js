@@ -13,8 +13,8 @@ import {
   signIn,
   signOutUser,
   startFirebaseAuth
-} from "./firebase-service.js?v=50";
-import { appFeatures, getAppLink, isAdminEmail, isPremiumTesterEmail } from "./firebase-config.js?v=50";
+} from "./firebase-service.js?v=52";
+import { appFeatures, getAppLink, isAdminEmail, isPremiumTesterEmail } from "./firebase-config.js?v=52";
 
 const cards = [
   {

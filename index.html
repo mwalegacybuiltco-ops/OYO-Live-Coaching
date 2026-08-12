@@ -9,13 +9,13 @@
       content="OYO Compass is an Own Your Options AI coach PWA for life, future self work, vision boards, journaling, gratitude, goals, wellbeing, business, and community."
     />
     <title>OYO Compass</title>
-    <link rel="manifest" href="manifest.webmanifest?v=50" />
-    <link rel="stylesheet" href="styles.css?v=50" />
+    <link rel="manifest" href="manifest.webmanifest?v=52" />
+    <link rel="stylesheet" href="styles.css?v=52" />
   </head>
   <body>
     <div id="app"></div>
     <script>
-      window.OYO_APP_VERSION = "50";
+      window.OYO_APP_VERSION = "52";
       window.addEventListener("DOMContentLoaded", () => {
         const storedVersion = localStorage.getItem("oyoAppVersion");
         if (storedVersion !== window.OYO_APP_VERSION && "serviceWorker" in navigator) {
@@ -28,8 +28,8 @@
               : Promise.resolve()
           ]).finally(() => {
             localStorage.setItem("oyoAppVersion", window.OYO_APP_VERSION);
-            if (!location.search.includes("fresh=50")) {
-              location.replace(`${location.pathname}?fresh=50`);
+            if (!location.search.includes("fresh=52")) {
+              location.replace(`${location.pathname}?fresh=52`);
             }
           });
         } else {
@@ -59,6 +59,6 @@
         }, 2500);
       });
     </script>
-    <script type="module" src="app.js?v=50"></script>
+    <script type="module" src="app.js?v=52"></script>
   </body>
 </html>
