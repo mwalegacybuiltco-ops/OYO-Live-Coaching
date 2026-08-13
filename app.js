@@ -13,8 +13,8 @@ import {
   signIn,
   signOutUser,
   startFirebaseAuth
-} from "./firebase-service.js?v=53";
-import { appFeatures, getAppLink, isAdminEmail, isPremiumTesterEmail } from "./firebase-config.js?v=53";
+} from "./firebase-service.js?v=55";
+import { appFeatures, getAppLink, isAdminEmail, isPremiumTesterEmail } from "./firebase-config.js?v=55";
 
 const cards = [
   {
@@ -1095,6 +1095,17 @@ function renderApp() {
     <div class="app-shell">
       <header class="topbar">
         <div class="logo"><span class="logo-mark">OYO</span><span>Own Your Options</span></div>
+        <details class="mobile-sections">
+          <summary>Sections</summary>
+          <div class="mobile-section-menu">
+            ${views
+              .map(
+                ([id, label]) =>
+                  `<button data-view="${id}" class="${state.activeView === id ? "active" : ""}">${label}</button>`
+              )
+              .join("")}
+          </div>
+        </details>
         <nav class="nav" aria-label="Primary">
           ${views
             .map(
@@ -2125,6 +2136,9 @@ function bindEvents() {
 
 function openView(view) {
   if (!view) return;
+  document.querySelectorAll(".mobile-sections[open]").forEach((menu) => {
+    menu.removeAttribute("open");
+  });
   if (view === "admin" && !isAdmin()) {
     showAppMessage("Admin access only.");
     return;

@@ -376,6 +376,10 @@ select:focus {
   background: var(--teal-soft);
 }
 
+.mobile-sections {
+  display: none;
+}
+
 .account {
   display: flex;
   flex: 0 0 auto;
@@ -1001,22 +1005,61 @@ select:focus {
   }
 
   .nav {
-    order: 3;
-    flex: 0 0 100%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px;
-    width: 100%;
-    padding: 4px 0 2px;
-    overflow: visible;
+    display: none;
   }
 
-  .nav button {
-    width: 100%;
+  .mobile-sections {
+    position: relative;
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .mobile-sections summary {
+    display: grid;
     min-height: 34px;
-    padding: 8px 9px;
+    padding: 7px 12px;
+    place-items: center;
+    color: var(--ink);
+    background: var(--gold);
+    border-radius: 8px;
+    font-weight: 900;
+    list-style: none;
+  }
+
+  .mobile-sections summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-section-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 40;
+    display: grid;
+    width: min(86vw, 320px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding: 10px;
+    background: #0f111d;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+
+  .mobile-section-menu button {
+    min-height: 38px;
+    padding: 8px;
+    color: var(--muted);
+    background: #151825;
+    border: 1px solid var(--line);
+    border-radius: 8px;
     font-size: 0.8rem;
-    text-align: center;
+    font-weight: 900;
+  }
+
+  .mobile-section-menu button.active {
+    color: var(--gold);
+    background: var(--teal-soft);
   }
 
   .avatar {
