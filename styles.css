@@ -977,13 +977,15 @@ select:focus {
   .topbar {
     align-items: center;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 8px;
     padding: 8px 10px;
-    overflow-x: auto;
+    overflow: visible;
   }
 
   .logo {
-    min-width: 38px;
+    flex: 1 1 auto;
+    min-width: 42px;
     gap: 0;
   }
 
@@ -999,13 +1001,22 @@ select:focus {
   }
 
   .nav {
-    gap: 4px;
+    order: 3;
+    flex: 0 0 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+    padding: 4px 0 2px;
+    overflow: visible;
   }
 
   .nav button {
+    width: 100%;
     min-height: 34px;
-    padding: 7px 9px;
-    font-size: 0.82rem;
+    padding: 8px 9px;
+    font-size: 0.8rem;
+    text-align: center;
   }
 
   .avatar {
@@ -1021,6 +1032,7 @@ select:focus {
   }
 
   .account {
+    flex: 0 0 auto;
     justify-content: flex-end;
     gap: 6px;
   }

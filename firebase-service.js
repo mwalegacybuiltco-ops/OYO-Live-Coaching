@@ -1,4 +1,4 @@
-import { firebaseConfig, hasFirebaseConfig, isAdminEmail } from "./firebase-config.js?v=52";
+import { firebaseConfig, hasFirebaseConfig, isAdminEmail } from "./firebase-config.js?v=53";
 
 let auth;
 let db;
